@@ -10,9 +10,12 @@ Tenant-aware authentication event logging for Vendra applications.
 
 ## Requirements
 
-- PHP 8.3+
-- Laravel 11 or 12
-- Filament 4
+- PHP 8.2+
+- Laravel 12
+- Filament 5
+- Livewire 4
+- Pest 4
+- Tailwind CSS 4
 - `misaf/vendra-user`
 - `misaf/vendra-tenant`
 - `misaf/laravel-authify-log`
