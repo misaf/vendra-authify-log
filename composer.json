@@ -23,7 +23,7 @@
         "misaf/vendra-tenant": "^12.0",
         "misaf/vendra-user": "dev-master",
         "misaf/laravel-authify-log": "^1.0",
-        "mokhosh/filament-jalali": "dev-master",
+        "mokhosh/filament-jalali": "5.1",
         "spatie/eloquent-sortable": "^4.5.2"
     },
     "require-dev": {

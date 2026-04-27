@@ -29,14 +29,14 @@ final class AuthifyLogServiceProvider extends ServiceProvider
     {
         AboutCommand::add('Vendra Authify Log', fn() => ['Model' => Config::get('vendra-authify-log.model'), 'Version' => '1.0.0']);
 
-        $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'vendra-authify-log');
+        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'vendra-authify-log');
 
         $this->publishes([
             __DIR__ . '/../../config/authify-log.php' => config_path('vendra-authify-log.php'),
         ], 'vendra-authify-log-config');
 
         $this->publishes([
-            __DIR__ . '/../../lang' => lang_path('vendor/vendra-authify-log'),
+            __DIR__ . '/../../resources/lang' => lang_path('vendor/vendra-authify-log'),
         ], 'vendra-authify-log-lang');
 
         $this->publishesMigrations([
