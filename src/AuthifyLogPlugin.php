@@ -7,7 +7,7 @@ namespace Misaf\VendraAuthifyLog;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class AuthifyLogPlugin implements Plugin
+final class AuthifyLogPlugin implements Plugin
 {
     public function getId(): string
     {

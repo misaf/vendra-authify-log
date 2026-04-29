@@ -24,7 +24,8 @@
         "misaf/vendra-user": "dev-master",
         "misaf/laravel-authify-log": "^1.0",
         "mokhosh/filament-jalali": "5.1",
-        "spatie/eloquent-sortable": "^4.5.2"
+        "spatie/eloquent-sortable": "^5.0",
+        "spatie/laravel-package-tools": "^1.92"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24.1",

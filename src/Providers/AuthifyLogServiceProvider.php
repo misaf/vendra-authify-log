@@ -6,16 +6,27 @@ namespace Misaf\VendraAuthifyLog\Providers;
 
 use Filament\Panel;
 use Illuminate\Foundation\Console\AboutCommand;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Misaf\VendraAuthifyLog\AuthifyLogPlugin;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
+use Spatie\LaravelPackageTools\Package;
 
 final class AuthifyLogServiceProvider extends ServiceProvider
 {
-    public function register(): void
+    public function configurePackage(Package $package): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/authify-log.php', 'vendra-authify-log');
+        $package
+            ->name('vendra-authify-log')
+            ->hasTranslations()
+            ->hasConfigFile()
+            ->hasMigration('create_vendra_authify_logs_table')
+            ->hasInstallCommand(function (InstallCommand $command): void {
+                $command->askToStarRepoOnGitHub('misaf/vendra-authify-log');
+            });
+    }
 
+    public function packageRegistered(): void
+    {
         Panel::configureUsing(function (Panel $panel): void {
             if ('admin' !== $panel->getId()) {
                 return;
@@ -25,22 +36,8 @@ final class AuthifyLogServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    public function packageBooted(): void
     {
-        AboutCommand::add('Vendra Authify Log', fn() => ['Model' => Config::get('vendra-authify-log.model'), 'Version' => '1.0.0']);
-
-        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'vendra-authify-log');
-
-        $this->publishes([
-            __DIR__ . '/../../config/authify-log.php' => config_path('vendra-authify-log.php'),
-        ], 'vendra-authify-log-config');
-
-        $this->publishes([
-            __DIR__ . '/../../resources/lang' => lang_path('vendor/vendra-authify-log'),
-        ], 'vendra-authify-log-lang');
-
-        $this->publishesMigrations([
-            __DIR__ . '/../../database/migrations/' => database_path('migrations')
-        ], 'vendra-authify-log-migrations');
+        AboutCommand::add('Vendra Authify Log', fn() => ['Version' => 'dev-master']);
     }
 }
