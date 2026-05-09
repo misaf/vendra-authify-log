@@ -19,7 +19,9 @@ final class AuthifyLogServiceProvider extends ServiceProvider
             ->name('vendra-authify-log')
             ->hasTranslations()
             ->hasConfigFile()
-            ->hasMigration('create_vendra_authify_logs_table')
+            ->hasMigrations([
+                'create_authify_logs_table'
+            ])
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command->askToStarRepoOnGitHub('misaf/vendra-authify-log');
             });
