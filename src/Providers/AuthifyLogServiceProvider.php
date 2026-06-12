@@ -6,12 +6,14 @@ namespace Misaf\VendraAuthifyLog\Providers;
 
 use Filament\Panel;
 use Illuminate\Foundation\Console\AboutCommand;
-use Illuminate\Support\ServiceProvider;
 use Misaf\VendraAuthifyLog\AuthifyLogPlugin;
+use Misaf\VendraAuthifyLog\Console\Commands\AuthifyLogChannelCommand;
+use Misaf\VendraAuthifyLog\Console\Commands\SeedCommand;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-final class AuthifyLogServiceProvider extends ServiceProvider
+final class AuthifyLogServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -20,8 +22,12 @@ final class AuthifyLogServiceProvider extends ServiceProvider
             ->hasTranslations()
             ->hasConfigFile()
             ->hasMigrations([
-                'create_authify_logs_table'
+                'create_authify_logs_table',
             ])
+            ->hasCommands(
+                AuthifyLogChannelCommand::class,
+                SeedCommand::class,
+            )
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command->askToStarRepoOnGitHub('misaf/vendra-authify-log');
             });
