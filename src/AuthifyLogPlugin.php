@@ -9,9 +9,11 @@ use Filament\Panel;
 
 final class AuthifyLogPlugin implements Plugin
 {
+    public const string ID = 'vendra-authify-log';
+
     public function getId(): string
     {
-        return 'vendra-authify-log';
+        return self::ID;
     }
 
     public static function make(): static
