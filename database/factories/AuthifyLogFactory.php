@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Misaf\VendraAuthifyLog\Database\Factories;
 
+use Illuminate\Database\Eloquent\Factories\Attributes\UseModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Misaf\LaravelAuthifyLog\Enums\AuthifyLogActionEnum;
 use Misaf\VendraAuthifyLog\Models\AuthifyLog;
@@ -13,13 +14,9 @@ use Misaf\VendraUser\Models\User;
 /**
  * @extends Factory<AuthifyLog>
  */
+#[UseModel(AuthifyLog::class)]
 final class AuthifyLogFactory extends Factory
 {
-    /**
-     * @var class-string<AuthifyLog>
-     */
-    protected $model = AuthifyLog::class;
-
     /**
      * @return array<string, mixed>
      */
