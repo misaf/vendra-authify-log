@@ -6,9 +6,12 @@ namespace Misaf\VendraAuthifyLog\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Attributes\UseFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Carbon;
 use Misaf\LaravelAuthifyLog\Enums\AuthifyLogActionEnum;
 use Misaf\LaravelAuthifyLog\Models\AuthifyLog as LaravelAuthifyLog;
+use Misaf\VendraAuthifyLog\Database\Factories\AuthifyLogFactory;
 use Misaf\VendraTenant\Traits\BelongsToTenant;
 
 /**
@@ -24,9 +27,13 @@ use Misaf\VendraTenant\Traits\BelongsToTenant;
  */
 #[Fillable(['tenant_id', 'user_id', 'action', 'ip_address', 'ip_country', 'user_agent'])]
 #[Hidden(['tenant_id'])]
+#[UseFactory(AuthifyLogFactory::class)]
 final class AuthifyLog extends LaravelAuthifyLog
 {
     use BelongsToTenant;
+
+    /** @use HasFactory<AuthifyLogFactory> */
+    use HasFactory;
 
     /**
      * @return array<string, string>
@@ -42,10 +49,5 @@ final class AuthifyLog extends LaravelAuthifyLog
             'ip_country' => 'string',
             'user_agent' => 'string',
         ];
-    }
-
-    protected static function newFactory(): AuthifyLog
-    {
-        return AuthifyLog::new();
     }
 }
