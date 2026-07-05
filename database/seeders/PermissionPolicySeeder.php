@@ -6,8 +6,8 @@ namespace Misaf\VendraAuthifyLog\Database\Seeders;
 
 use Misaf\VendraAuthifyLog\AuthifyLogPlugin;
 use Misaf\VendraAuthifyLog\Enums\AuthifyLogPolicyEnum;
+use Misaf\VendraSupport\Concerns\RequiresCurrentTenant;
 use Misaf\VendraSupport\Database\Seeders\PermissionPolicySeeder as BasePermissionPolicySeeder;
-use Misaf\VendraTenant\Concerns\RequiresCurrentTenant;
 
 final class PermissionPolicySeeder extends BasePermissionPolicySeeder
 {

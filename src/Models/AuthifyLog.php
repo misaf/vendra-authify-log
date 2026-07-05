@@ -12,7 +12,7 @@ use Illuminate\Support\Carbon;
 use Misaf\LaravelAuthifyLog\Enums\AuthifyLogActionEnum;
 use Misaf\LaravelAuthifyLog\Models\AuthifyLog as LaravelAuthifyLog;
 use Misaf\VendraAuthifyLog\Database\Factories\AuthifyLogFactory;
-use Misaf\VendraTenant\Traits\BelongsToTenant;
+use Misaf\VendraSupport\Traits\BelongsToTenant;
 
 /**
  * @property int $id

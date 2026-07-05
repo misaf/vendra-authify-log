@@ -22,7 +22,6 @@
 		"illuminate/support": "^12.0 || ^13.0",
 		"misaf/laravel-authify-log": "^1.0",
 		"misaf/vendra-support": "dev-master",
-		"misaf/vendra-tenant": "dev-master",
 		"misaf/vendra-user": "dev-master",
 		"mokhosh/filament-jalali": "5.0",
 		"spatie/eloquent-sortable": "^5.0",
