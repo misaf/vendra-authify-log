@@ -5,66 +5,66 @@ declare(strict_types=1);
 namespace Misaf\VendraAuthifyLog\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Contracts\Auth\Access\Authorizable;
 use Misaf\VendraAuthifyLog\Enums\AuthifyLogPolicyEnum;
 use Misaf\VendraAuthifyLog\Models\AuthifyLog;
-use Misaf\VendraUser\Models\User;
 
 final class AuthifyLogPolicy
 {
     use HandlesAuthorization;
 
-    public function create(User $user): bool
+    public function create(Authorizable $user): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::CREATE);
+        return $user->can(AuthifyLogPolicyEnum::CREATE->value);
     }
 
-    public function delete(User $user, AuthifyLog $authifyLog): bool
+    public function delete(Authorizable $user, AuthifyLog $authifyLog): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::DELETE);
+        return $user->can(AuthifyLogPolicyEnum::DELETE->value);
     }
 
-    public function deleteAny(User $user): bool
+    public function deleteAny(Authorizable $user): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::DELETE_ANY);
+        return $user->can(AuthifyLogPolicyEnum::DELETE_ANY->value);
     }
 
-    public function forceDelete(User $user, AuthifyLog $authifyLog): bool
+    public function forceDelete(Authorizable $user, AuthifyLog $authifyLog): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::FORCE_DELETE);
+        return $user->can(AuthifyLogPolicyEnum::FORCE_DELETE->value);
     }
 
-    public function forceDeleteAny(User $user): bool
+    public function forceDeleteAny(Authorizable $user): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::FORCE_DELETE_ANY);
+        return $user->can(AuthifyLogPolicyEnum::FORCE_DELETE_ANY->value);
     }
 
-    public function replicate(User $user, AuthifyLog $authifyLog): bool
+    public function replicate(Authorizable $user, AuthifyLog $authifyLog): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::REPLICATE);
+        return $user->can(AuthifyLogPolicyEnum::REPLICATE->value);
     }
 
-    public function restore(User $user, AuthifyLog $authifyLog): bool
+    public function restore(Authorizable $user, AuthifyLog $authifyLog): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::RESTORE);
+        return $user->can(AuthifyLogPolicyEnum::RESTORE->value);
     }
 
-    public function restoreAny(User $user): bool
+    public function restoreAny(Authorizable $user): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::RESTORE_ANY);
+        return $user->can(AuthifyLogPolicyEnum::RESTORE_ANY->value);
     }
 
-    public function update(User $user, AuthifyLog $authifyLog): bool
+    public function update(Authorizable $user, AuthifyLog $authifyLog): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::UPDATE);
+        return $user->can(AuthifyLogPolicyEnum::UPDATE->value);
     }
 
-    public function view(User $user, AuthifyLog $authifyLog): bool
+    public function view(Authorizable $user, AuthifyLog $authifyLog): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::VIEW);
+        return $user->can(AuthifyLogPolicyEnum::VIEW->value);
     }
 
-    public function viewAny(User $user): bool
+    public function viewAny(Authorizable $user): bool
     {
-        return $user->can(AuthifyLogPolicyEnum::VIEW_ANY);
+        return $user->can(AuthifyLogPolicyEnum::VIEW_ANY->value);
     }
 }
