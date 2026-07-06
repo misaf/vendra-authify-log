@@ -22,7 +22,6 @@
 		"illuminate/support": "^13.0",
 		"misaf/laravel-authify-log": "^1.0",
 		"misaf/vendra-support": "dev-master",
-		"misaf/vendra-user": "dev-master",
 		"misaf/filament-jalali": "^5.1",
 		"spatie/eloquent-sortable": "^5.0",
 		"spatie/laravel-package-tools": "^1.0"
@@ -32,6 +31,7 @@
 		"larastan/larastan": "^3.0",
 		"laravel/boost": "^2.0",
 		"laravel/pint": "^1.0",
+		"misaf/vendra-user": "dev-master",
 		"mockery/mockery": "^1.0",
 		"nunomaduro/collision": "^8.0",
 		"orchestra/testbench": "^11.0",
@@ -45,8 +45,12 @@
 	"autoload": {
 		"psr-4": {
 			"Misaf\\VendraAuthifyLog\\": "src/",
+			"Misaf\\VendraAuthifyLog\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
 			"Misaf\\VendraAuthifyLog\\Database\\Factories\\": "database/factories/",
-			"Misaf\\VendraAuthifyLog\\Database\\Seeders\\": "database/seeders/",
 			"Misaf\\VendraAuthifyLog\\Tests\\": "tests/"
 		}
 	},
