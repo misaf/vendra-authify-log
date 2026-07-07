@@ -8,7 +8,8 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use Misaf\LaravelAuthifyLog\Console\Commands\AuthifyLogChannelCommand as LaravelAuthifyLogChannelCommand;
 use Misaf\LaravelAuthifyLog\Jobs\AuthifyLogJob;
-use Misaf\VendraTenant\Models\Tenant;
+use Misaf\VendraSupport\Contracts\TenantResolver;
+use Misaf\VendraSupport\Support\TenantAwareness;
 
 class AuthifyLogChannelCommand extends LaravelAuthifyLogChannelCommand
 {
@@ -33,10 +34,12 @@ class AuthifyLogChannelCommand extends LaravelAuthifyLogChannelCommand
      */
     private function dispatchJobForTenant(int $tenantId, array $groupedLogs): void
     {
-        // Log::debug($groupedLogs);
         try {
-            $tenant = Tenant::findOrFail($tenantId);
-            $tenant->makeCurrent();
+            if (TenantAwareness::enabled() && ! app(TenantResolver::class)->makeCurrent($tenantId)) {
+                Log::error('Failed to dispatch job for tenant.', ["Tenant [{$tenantId}] was not found."]);
+
+                return;
+            }
 
             AuthifyLogJob::dispatch($groupedLogs);
         } catch (Exception $e) {

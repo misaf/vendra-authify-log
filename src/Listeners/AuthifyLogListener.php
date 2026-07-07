@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redis;
 use Misaf\LaravelAuthifyLog\Enums\AuthifyLogActionEnum;
 use Misaf\LaravelAuthifyLog\Listeners\AuthifyLogListener as LaravelAuthifyLogListener;
-use Misaf\VendraTenant\Models\Tenant;
+use Misaf\VendraSupport\Support\TenantAwareness;
 
 class AuthifyLogListener extends LaravelAuthifyLogListener
 {
@@ -18,7 +18,7 @@ class AuthifyLogListener extends LaravelAuthifyLogListener
 
         $timestamp = Carbon::now()->toDateTimeString();
         $logEntry = [
-            'tenant_id'  => Tenant::current()->id,
+            'tenant_id'  => TenantAwareness::currentId(),
             'user_id'    => $userId,
             'action'     => $action->value,
             'ip_address' => request()->ip(),

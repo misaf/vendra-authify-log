@@ -6,9 +6,10 @@ namespace Misaf\VendraAuthifyLog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Attributes\UseModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Misaf\LaravelAuthifyLog\Enums\AuthifyLogActionEnum;
 use Misaf\VendraAuthifyLog\Models\AuthifyLog;
-use Misaf\VendraTenant\Models\Tenant;
+use Misaf\VendraSupport\Support\TenantAwareness;
 use Misaf\VendraUser\Models\User;
 
 /**
@@ -23,7 +24,6 @@ final class AuthifyLogFactory extends Factory
     public function definition(): array
     {
         return [
-            'tenant_id'  => Tenant::factory(),
             'user_id'    => User::factory(),
             'action'     => $this->faker->randomElement(AuthifyLogActionEnum::cases()),
             'ip_address' => $this->faker->ipv4(),
@@ -33,13 +33,16 @@ final class AuthifyLogFactory extends Factory
     }
 
     /**
-     * @param Tenant $tenant
-     * @return static
+     * No-op without a tenant provider, since there is no `tenant_id` column.
      */
-    public function forTenant(Tenant $tenant): static
+    public function forTenant(Model|int $tenant): static
     {
+        if ( ! TenantAwareness::enabled()) {
+            return $this;
+        }
+
         return $this->state(fn(): array => [
-            'tenant_id' => $tenant->id,
+            'tenant_id' => $tenant instanceof Model ? $tenant->getKey() : $tenant,
         ]);
     }
 
