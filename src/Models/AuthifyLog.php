@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Carbon;
-use Misaf\LaravelAuthifyLog\Enums\AuthifyLogActionEnum;
-use Misaf\LaravelAuthifyLog\Models\AuthifyLog as LaravelAuthifyLog;
+use Misaf\AuthifyLog\Enums\AuthifyLogActionEnum;
+use Misaf\AuthifyLog\Models\AuthifyLog as LaravelAuthifyLog;
 use Misaf\VendraAuthifyLog\Database\Factories\AuthifyLogFactory;
 use Misaf\VendraSupport\Traits\BelongsToTenant;
 

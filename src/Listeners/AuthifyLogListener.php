@@ -6,8 +6,8 @@ namespace Misaf\VendraAuthifyLog\Listeners;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redis;
-use Misaf\LaravelAuthifyLog\Enums\AuthifyLogActionEnum;
-use Misaf\LaravelAuthifyLog\Listeners\AuthifyLogListener as LaravelAuthifyLogListener;
+use Misaf\AuthifyLog\Enums\AuthifyLogActionEnum;
+use Misaf\AuthifyLog\Listeners\AuthifyLogListener as LaravelAuthifyLogListener;
 use Misaf\VendraSupport\Support\TenantAwareness;
 
 class AuthifyLogListener extends LaravelAuthifyLogListener

@@ -6,8 +6,8 @@ namespace Misaf\VendraAuthifyLog\Console\Commands;
 
 use Exception;
 use Illuminate\Support\Facades\Log;
-use Misaf\LaravelAuthifyLog\Console\Commands\AuthifyLogChannelCommand as LaravelAuthifyLogChannelCommand;
-use Misaf\LaravelAuthifyLog\Jobs\AuthifyLogJob;
+use Misaf\AuthifyLog\Console\Commands\AuthifyLogChannelCommand as LaravelAuthifyLogChannelCommand;
+use Misaf\AuthifyLog\Jobs\AuthifyLogJob;
 use Misaf\VendraSupport\Contracts\TenantResolver;
 use Misaf\VendraSupport\Support\TenantAwareness;
 
