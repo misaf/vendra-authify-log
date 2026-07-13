@@ -4,7 +4,7 @@ The `misaf/vendra-authify-log` package owns authentication activity logging (buf
 
 ### Standards
 
-- Keep authify-log domain code inside `app-modules/vendra-authify-log` using the `Misaf\VendraAuthifyLog` namespace.
+- Keep authify-log domain code inside `packages/vendra-authify-log` using the `Misaf\VendraAuthifyLog` namespace.
 - Use this package for models, migrations, factories, seeders, policies, permission enums, observers, Filament resources, translations, config, and package bootstrapping.
 - Log entries are buffered to Redis and drained by the channel command; the write path sets `tenant_id` explicitly via `TenantAwareness::currentId()` because it does not go through Eloquent's `BelongsToTenant` hook.
 - Follow existing model conventions where they apply: tenant ownership, translated `name` / `description` / `slug`, soft deletes, sortable `position`, media collections, factories, and typed relationships.
