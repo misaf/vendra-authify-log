@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Misaf\VendraAuthifyLog\Filament\Resources\RelationManagers;
+namespace Misaf\VendraAuthifyLog\Filament\Clusters\Resources\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Number;
-use Misaf\VendraAuthifyLog\Filament\Resources\AuthifyLogResource;
+use Misaf\VendraAuthifyLog\Filament\Clusters\Resources\AuthifyLogResource;
 
 class AuthifyLogRelationManager extends RelationManager
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Misaf\VendraAuthifyLog\Filament\Resources\Pages;
+namespace Misaf\VendraAuthifyLog\Filament\Clusters\Resources\Pages;
 
 use Filament\Resources\Pages\ListRecords;
-use Misaf\VendraAuthifyLog\Filament\Resources\AuthifyLogResource;
+use Misaf\VendraAuthifyLog\Filament\Clusters\Resources\AuthifyLogResource;
 
 final class ListAuthifyLogs extends ListRecords
 {
